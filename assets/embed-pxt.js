@@ -42,23 +42,24 @@ require(["gitbook", "jQuery"], function(gitbook, $) {
   gitbook.events.bind("page.change", function(e) {
     if (!window.ksRunnerWhenLoaded) loadEmbedScript();
     else {
-        pxt.runner.renderAsync({
-            snippetClass: 'lang-blocks',
-            signatureClass: 'lang-sig',
-            blocksClass:'lang-block',
-            shuffleClass: 'lang-shuffle',
-            simulatorClass:'lang-sim',
-            linksClass: 'lang-links',
-            projectClass: 'lang-project',
-            namespacesClass: 'lang-namespaces',
-            codeCardClass: 'lang-codecard',
-            packageClass: 'lang-package',
-            simulator: true,
-            hex: true,
-            hexName: 'test',
-            snippetReplaceParent: true,
-        }).done(function() {          
-        });
+        if (typeof pxt != 'undefined')
+            pxt.runner.renderAsync({
+                snippetClass: 'lang-blocks',
+                signatureClass: 'lang-sig',
+                blocksClass:'lang-block',
+                shuffleClass: 'lang-shuffle',
+                simulatorClass:'lang-sim',
+                linksClass: 'lang-links',
+                projectClass: 'lang-project',
+                namespacesClass: 'lang-namespaces',
+                codeCardClass: 'lang-codecard',
+                packageClass: 'lang-package',
+                simulator: true,
+                hex: true,
+                hexName: 'test',
+                snippetReplaceParent: true,
+            }).done(function() {          
+            });
     }
   });
 })
